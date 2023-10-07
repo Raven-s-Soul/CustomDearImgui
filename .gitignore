@@ -141,4 +141,4 @@ modules/imgui/misc/fonts/*
 *.sh
 *.bat
 build/*
-external/*
+imgui.ini

@@ -138,7 +138,5 @@ modules/imgui/misc/fonts/*
 !modules/imgui/misc/fonts/binary_to_compressed_c.cpp
 
 #App Name:
-*.sh
-*.bat
 build/*
 imgui.ini

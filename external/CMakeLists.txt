@@ -10,6 +10,9 @@ add_library(imgui_glfw STATIC
     imgui/misc/cpp/imgui_stdlib.cpp
 )
 
+# target_compile_definitions(imgui_glfw
+# PRIVATE IMGUI_IMPL_OPENGL_LOADER_GLAD=1
+# )
 target_link_libraries(imgui_glfw PUBLIC glfw)
 
 target_include_directories(imgui_glfw PUBLIC

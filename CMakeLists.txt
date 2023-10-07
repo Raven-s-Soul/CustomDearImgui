@@ -37,8 +37,21 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/external/CMakeLists.txt")
 endif()
 
 # !Dependencies
+# * https://www.glfw.org/docs/3.3/build_guide.html
 add_subdirectory(external/glfw)
-add_subdirectory(external) # *for Imgui
+
+# * Imgui
+add_subdirectory(external)
+
+# * OpenGL
+find_package(OpenGL REQUIRED)
 
 # !Build
 add_subdirectory(src)
+
+# ! target_link
+target_link_libraries(${PROJECT_NAME}
+    OpenGL::GL
+    app_external_deps
+    glfw
+)

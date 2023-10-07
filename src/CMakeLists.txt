@@ -3,26 +3,6 @@ add_executable(${PROJECT_NAME}
     main.cpp
 )
 
-# target_include_directories(${PROJECT_NAME}
-# PUBLIC external/glfw/include/GLFW # ?
-# PUBLIC external/imgui
-# PUBLIC external/imgui/backends
-# PUBLIC external/imgui/misc/cpp
-# )
-# target_link_directories(${PROJECT_NAME}
-# PRIVATE external/glfw/src
-# PRIVATE external/imgui
-# PRIVATE external/imgui/backends
-# )
-find_package(OpenGL REQUIRED)
-
-target_link_libraries(${PROJECT_NAME}
-    PRIVATE OpenGL::GL
-    PRIVATE app_external_deps
-
-    # glfw
-)
-
 # ! Platform-specific configuration
 # if(UNIX AND NOT APPLE)
 # message("Linux")
@@ -49,7 +29,9 @@ target_link_libraries(${PROJECT_NAME}
 # link_directories(/usr/local/lib /opt/local/lib /opt/homebrew/lib)
 # target_link_libraries(${PROJECT_NAME} PRIVATE glfw PRIVATE app_external_deps)
 # endif()
+
 # if(WIN32)
-# target_link_options(${PROJECT_NAME}
-# PUBLIC "-lgdi32 -lopengl32 -limm32 -lglfw3")
+# target_link_libraries(${PROJECT_NAME}
+# PRIVATE imgui imgui_impl_glfw imgui_impl_opengl3 glfw
+# )
 # endif()

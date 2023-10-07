@@ -1,5 +1,4 @@
-# set(OpenGl_GL_PREFERENCE "LEGACY")
-
+# ! imgui_glfw
 add_library(imgui_glfw STATIC
     imgui/imgui.cpp
     imgui/imgui_demo.cpp
@@ -18,6 +17,7 @@ target_include_directories(imgui_glfw PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/imgui/backends
 )
 
+# ! app_external_deps
 add_library(app_external_deps INTERFACE)
 target_link_libraries(app_external_deps INTERFACE
     imgui_glfw

@@ -48,10 +48,3 @@ find_package(OpenGL REQUIRED)
 
 # !Build
 add_subdirectory(src)
-
-# ! target_link
-target_link_libraries(${PROJECT_NAME}
-    OpenGL::GL
-    app_external_deps
-    glfw
-)

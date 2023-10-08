@@ -1,7 +1,8 @@
 #! /bin/sh
-
-cd .\build\
+#! working fine on MacOS- !Todo test for Linux
+mkdir build
+cd build
 cmake ..
 cd ..
-cmake --build .\build\
-.\build\Debug\project.exe
+cmake --build build
+build/project

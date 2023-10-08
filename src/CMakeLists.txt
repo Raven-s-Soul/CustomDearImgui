@@ -18,19 +18,34 @@ add_executable(${PROJECT_NAME}
 if(APPLE)
     message("Mac OS X")
 
-    find_library(OpenGL_LIBRARY OpenGL)
     find_library(COCOA_LIBRARY Cocoa)
     find_library(IOKIT_LIBRARY IOKit)
     find_library(COREVIDEO_LIBRARY CoreVideo)
 
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenGL_LIBRARY} ${COCOA_LIBRARY} ${IOKIT_LIBRARY} ${COREVIDEO_LIBRARY})
-    target_include_directories(${PROJECT_NAME} PRIVATE /usr/local/include /opt/local/include /opt/homebrew/include)
-    link_directories(/usr/local/lib /opt/local/lib /opt/homebrew/lib)
-    target_link_libraries(${PROJECT_NAME} glfw app_external_deps)
+    target_link_libraries(${PROJECT_NAME}
+        glfw
+        app_external_deps
+        OpenGL::GL
+        ${COCOA_LIBRARY}
+        ${IOKIT_LIBRARY}
+        ${COREVIDEO_LIBRARY})
+    target_include_directories(${PROJECT_NAME}
+        PRIVATE /usr/local/include
+        /opt/local/include
+        /opt/homebrew/include
+    )
+    link_directories(
+        /usr/local/lib
+        /opt/local/lib
+        /opt/homebrew/lib
+    )
 endif()
 
-# if(WIN32)
-# target_link_libraries(${PROJECT_NAME}
-# PRIVATE imgui imgui_impl_glfw imgui_impl_opengl3 glfw
-# )
-# endif()
+if(WIN32)
+    # ! target_link
+    target_link_libraries(${PROJECT_NAME}
+        OpenGL::GL
+        app_external_deps
+        glfw
+    )
+endif()

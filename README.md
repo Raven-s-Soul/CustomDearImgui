@@ -1,6 +1,10 @@
 # CustomDearImgui
-### Features
+### Features:
 •  [Multi-Viewports](https://github.com/ocornut/imgui/wiki/Multi-Viewports)
 
-### Required
+•  [GLFW](https://github.com/glfw/glfw)
+
+•  [OpenGL](https://it.wikipedia.org/wiki/OpenGL)
+
+### Required:
 •  [CMake](https://github.com/Kitware/CMake)

@@ -4,17 +4,21 @@ add_executable(${PROJECT_NAME}
 )
 
 # ! Platform-specific configuration
-# if(UNIX AND NOT APPLE)
-# message("Linux")
-# find_package(PkgConfig REQUIRED)
-# pkg_check_modules(GLFW REQUIRED glfw3)
+ if(UNIX AND NOT APPLE)
+    message("Linux")
+    find_package(PkgConfig REQUIRED)
+    #pkg_check_modules(GLFW REQUIRED glfw3)
 
-# target_link_libraries(${PROJECT_NAME}
-# PRIVATE app_external_deps
-# PRIVATE ${LINUX_GL_LIBS}
-# ${GLFW_STATIC_LIBRARIES})
-# target_compile_options(${PROJECT_NAME} PRIVATE ${GLFW_CFLAGS})
-# endif()
+    target_link_libraries(${PROJECT_NAME}
+        PRIVATE app_external_deps
+        OpenGL::GL
+        PRIVATE ${LINUX_GL_LIBS}
+        ${GLFW_STATIC_LIBRARIES})
+        
+    target_compile_options(${PROJECT_NAME} PRIVATE ${GLFW_CFLAGS})
+   
+endif()
+
 if(APPLE)
     message("Mac OS X")
 

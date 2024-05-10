@@ -41,6 +41,16 @@ endif()
 
 # !Dependencies
 # * https://www.glfw.org/docs/3.3/build_guide.html
+
+if(UNIX AND NOT APPLE)
+    message("Linux")
+    find_package(X11 REQUIRED)
+    find_package(Xrandr)
+    if (NOT XRANDR_FOUND)
+        message(FATAL_ERROR "RandR headers not found; install libxrandr development package")
+    endif()
+endif()
+
 add_subdirectory(external/glfw)
 
 # * Imgui

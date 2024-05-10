@@ -31,6 +31,10 @@ jobs:
             c_compiler: clang
           - os: ubuntu-latest
             c_compiler: cl
+          - os: ubuntu-latest
+            c_compiler: gcc
+          - os: ubuntu-latest
+            c_compiler: clang
           - os: macOS-latest
             c_compiler: cl
 

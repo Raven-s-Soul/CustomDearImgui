@@ -9,12 +9,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Needed for tests
 set(CMAKE_CXX_COMPILER g++)
 
+# set(CMAKE_CXX_COMPILER cl) # Using Visual Studio
+
 # !Project
 project(project)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+
+set(CMAKE_HAVE_LIBC_PTHREAD 1)
 
 # !Auto Download from git all the submodules
 find_package(Git QUIET)
@@ -48,6 +52,15 @@ add_subdirectory(external)
 
 # * OpenGL
 find_package(OpenGL REQUIRED)
+
+# pthread-win32 for pthread on windows
+# if(WIN32)
+# add_subdirectory(external/pthread-win32)
+# include_directories(external/pthreads-w32)
+# set(PTHREADS_W32_LIBRARY pthread-win32)
+# else()
+# find_package(Threads REQUIRED)
+# endif()
 
 # !Build
 add_subdirectory(src)

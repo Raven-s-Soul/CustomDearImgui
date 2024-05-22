@@ -24,4 +24,6 @@ target_include_directories(imgui_glfw PUBLIC
 add_library(app_external_deps INTERFACE)
 target_link_libraries(app_external_deps INTERFACE
     imgui_glfw
+
+    # pthreadVC3 # pthread-win32
 )

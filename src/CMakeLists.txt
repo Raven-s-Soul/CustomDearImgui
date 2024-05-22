@@ -1,22 +1,22 @@
 # ! Executable
 add_executable(${PROJECT_NAME}
-    main.cpp
+    project.cpp
+    project.h
 )
 
 # ! Platform-specific configuration
- if(UNIX AND NOT APPLE)
+if(UNIX AND NOT APPLE)
     message("Linux")
     find_package(PkgConfig REQUIRED)
-    #pkg_check_modules(GLFW REQUIRED glfw3)
 
+    # pkg_check_modules(GLFW REQUIRED glfw3)
     target_link_libraries(${PROJECT_NAME}
         PRIVATE app_external_deps
         OpenGL::GL
         PRIVATE ${LINUX_GL_LIBS}
         ${GLFW_STATIC_LIBRARIES})
-        
+
     target_compile_options(${PROJECT_NAME} PRIVATE ${GLFW_CFLAGS})
-   
 endif()
 
 if(APPLE)

@@ -1,4 +1,6 @@
 # CustomDearImgui
+[![Build Status](https://github.com/Raven-s-Soul/CustomDearImgui/actions/workflows/cmake-multi-platform.yaml/badge.svg?event=push)](https://github.com/Raven-s-Soul/CustomDearImgui/actions?workflow=DearImgui)
+
 ### Features:
 •  [Multi-Viewports](https://github.com/ocornut/imgui/wiki/Multi-Viewports)
 

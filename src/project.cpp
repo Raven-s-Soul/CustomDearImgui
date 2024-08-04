@@ -56,7 +56,7 @@ int main()
     if (window == nullptr)
         return 1;
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1); // Enable vsyn
+    // glfwSwapInterval(0); //* Enable vsyn
 
     project gui(ImVec4(0.45f, 0.55f, 0.60f, 1.00f));
     gui.Init(window, glsl_version);
@@ -68,8 +68,33 @@ int main()
     io.IniFilename = nullptr;
     EMSCRIPTEN_MAINLOOP_BEGIN
 #else
+    //* FPS Lock variables
+    auto last_time = std::chrono::steady_clock::now();
+    const int target_fps = 60;
+    const double target_frame_duration = 1.0 / target_fps;
+
     while (!glfwWindowShouldClose(window))
     {
+
+        //* FPS Lock
+        // Calculate elapsed time
+        auto now = std::chrono::steady_clock::now();
+        std::chrono::duration<double> elapsed = now - last_time;
+
+        // Wait until target frame duration is reached
+        while (elapsed.count() < target_frame_duration)
+        {
+            // Busy wait or yield to allow other threads to run
+            std::this_thread::yield();
+
+            // Recalculate elapsed time
+            now = std::chrono::steady_clock::now();
+            elapsed = now - last_time;
+        }
+
+        // Update last_time for next frame
+        last_time = now;
+
 #endif
     glfwPollEvents();
     gui.newFrame();

@@ -140,3 +140,4 @@ modules/imgui/misc/fonts/*
 #App Name:
 build/*
 imgui.ini
+.vscode

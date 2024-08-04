@@ -58,7 +58,8 @@ int main()
     glfwMakeContextCurrent(window);
     // glfwSwapInterval(0); //* Enable vsyn
 
-    project gui(ImVec4(0.45f, 0.55f, 0.60f, 1.00f));
+    // EsterEgg x Scilla
+    project gui(ImVec4(0.9f, 0.5f, 0.99f, 1.00f));
     gui.Init(window, glsl_version);
 
     // Main loop
@@ -159,6 +160,9 @@ void project::Init(GLFWwindow *window, const char *glsl_version)
 
 void project::Update()
 {
+    //! Docking the Background
+    // ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+
     // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
     if (show_demo_window)
         ImGui::ShowDemoWindow(&show_demo_window);
